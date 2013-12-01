@@ -1,6 +1,13 @@
-(ns {{name}}.core)
+(ns {{name}}.core
+    (:require [compojure.core :refer [defroutes GET]]
+              [compojure.route :refer [resources not-found]]
+              [compojure.handler :refer [site]]))
 
-(defn foo
-  "I don't do a whole lot."
-  [x]
-  (println x "Hello, World!"))
+(defroutes app-routes
+  (GET "/" [] "<p>Hello from compojure</p>")
+  (resources "/")
+  (not-found "Page not found"))
+
+(def handler
+  (site app-routes))
+
