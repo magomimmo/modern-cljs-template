@@ -10,18 +10,20 @@
   :source-paths ["src/clj" "src/cljs"]
 
   :dependencies [[org.clojure/clojure "1.5.1"]
-                 [org.clojure/clojurescript "0.0-2080"]]
+                 [org.clojure/clojurescript "0.0-2080"]
+                 [compojure "1.1.6"]]
 
-  :plugins [[lein-cljsbuild "1.0.0"]]
+  :plugins [[lein-cljsbuild "1.0.0"]
+            [lein-ring "0.8.8"]]
 
   :hooks [leiningen.cljsbuild]
 
+  :ring {:handler {{name}}.core/handler}
+
   :cljsbuild
-  {:builds {:whitespace
+  {:builds {:prod
             {:source-paths ["src/cljs"]
              :compiler
              {:output-to "resources/public/js/{{name}}.js"
-              :output-dir "resources/public/js"
-              :source-map "resources/public/js/{{name}}.js.map"
-              :optimizations :whitespace
-              :pretty-print true}}}})
+              :optimizations :advanced
+              :pretty-print false}}}})
