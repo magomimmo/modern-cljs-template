@@ -1,4 +1,4 @@
-(defproject modern-cljs/lein-template "0.1.0"
+(defproject modern-cljs/lein-template "0.0.2"
   :description "A lein-template to create CLJ/CLJS mixed projects with batteries included"
   :url "http://example.com/FIXME"
   :license {:name "Eclipse Public License"
