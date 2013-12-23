@@ -8,7 +8,21 @@
                    :output-dir "dev-resources/public/js"
                    :source-map "dev-resources/public/js/ws.js.map"
                    :optimizations :whitespace
-                   :pretty-print true}}}}
+                   :pretty-print true}}
+
+                 :simple
+                 {:source-paths ["src/cljs"]
+                  :compiler
+                  {:output-to "dev-resources/public/js/simple.js"
+                   :optimizations :simple
+                   :pretty-print false}}
+
+                 :advanced
+                 {:source-paths ["src/cljs"]
+                  :compiler
+                  {:output-to "dev-resources/public/js/advanced.js"
+                   :optimizations :advanced
+                   :pretty-print false}}}}
        :repl-options {:nrepl-middleware [cemerick.piggieback/wrap-cljs-repl]}
        :injections [(require '[cljs.repl.browser :as brepl]
                              '[cemerick.piggieback :as pb])
