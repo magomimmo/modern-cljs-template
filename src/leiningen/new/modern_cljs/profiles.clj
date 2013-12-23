@@ -1,28 +1,16 @@
 {:dev {:resources-paths ["dev-resources"]
-       :test-paths ["test/clj"]
-       :source-paths ["dev-resources/tools/http" 
-                      "dev-resources/tools/repl"]
-       
-       :dependencies [[ring "1.2.1"]
-                      [enlive "1.1.4"]]
-
-       :plugins [[com.cemerick/austin "0.1.3"]]
-       
-       :cljsbuild 
-       {:builds 
-        {:dev
-         {:source-paths ["src/cljs" 
-                         "dev-resources/tools/repl"]
-          :compiler
-          {:output-dir "dev-resources/public/js"
-           :output-to "dev-resources/public/js/{{name}}-dev.js"
-           :source-map "dev-resources/public/js/{{name}}-dev.js.map"
-           :optimizations :whitespace
-           :pretty-print true}}}}
-
-       :injections [(require '[ring.server :as http :refer [run]]
-                             'cemerick.austin.repls)
+       :dependencies [[com.cemerick/piggieback "0.1.2"]]
+       :cljsbuild
+       {:builds {:ws
+                 {:source-paths ["src/cljs" "dev-resources/tools/repl"]
+                  :compiler
+                  {:output-to "dev-resources/public/js/ws.js"
+                   :output-dir "dev-resources/public/js"
+                   :source-map "dev-resources/public/js/ws.js.map"
+                   :optimizations :whitespace
+                   :pretty-print true}}}}
+       :repl-options {:nrepl-middleware [cemerick.piggieback/wrap-cljs-repl]}
+       :injections [(require '[cljs.repl.browser :as brepl]
+                             '[cemerick.piggieback :as pb])
                     (defn browser-repl []
-                      (cemerick.austin.repls/cljs-repl (reset! cemerick.austin.repls/browser-repl-env
-                                                               (cemerick.austin/repl-env))))]}}
-
+                      (pb/cljs-repl :repl-env (brepl/repl-env :port 9000)))]}}

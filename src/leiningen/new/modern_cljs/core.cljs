@@ -1,11 +1,3 @@
-(ns {{name}}.core)
+(ns {{namespace}})
 
-(defn foo [greeting]
-  (if greeting 
-    (str greeting "ClojureScript!")
-    (str "Hello, ClojureScript!")))
-
-(.write js/document (foo "Welcome to "))
-
-
-
+(.write js/document "Hello, ClojureScript!")
