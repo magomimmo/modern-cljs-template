@@ -1,4 +1,4 @@
-(ns {{name}}.core)
+(ns {{namespace}})
 
 (.write js/document "Hello, World!")
 

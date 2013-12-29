@@ -1,4 +1,4 @@
-(defproject {{name}} "0.1.0-SNAPSHOT"
+(defproject {{raw-name}} "0.1.0-SNAPSHOT"
   :description "FIXME: write this!"
   :url "http://example.com/FIXME"
 
