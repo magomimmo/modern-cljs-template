@@ -16,11 +16,5 @@
              ["doc/intro.md" (render "intro.md" data)]
              ["LICENSE" (render "LICENSE" data)]
              ["project.clj" (render "project.clj" data)]
-             ["profiles.clj" (render "profiles.clj" data)]
              ["resources/public/index.html" (render "index.html" data)]
-             ["dev-resources/public/index-dev.html" (render "index-dev.html" data)]
-             ["dev-resources/tools/repl/brepl/connect.cljs" (render "connect.cljs" data)]
-             ["dev-resources/tools/http/ring/server.clj" (render "server.clj")]
-             ["src/cljs/{{sanitized}}/core.cljs" (render "core.cljs" data)]
-             ["src/clj/{{sanitized}}/core.clj" (render "core.clj" data)]
-             ["test/clj/{{sanitized}}/core_test.clj" (render "core_test.clj" data)])))
+             ["src/cljs/{{sanitized}}/core.cljs" (render "core.cljs" data)])))
