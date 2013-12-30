@@ -13,8 +13,9 @@
 
   :cljsbuild {:builds
               {:{{name}}
-               {:source-paths ["src/cljs"]
-                :compiler {:output-to "resources/public/js/{{name}}.js"
-                           :output-dir "resources/public/js"
-                           :optimizations :none
-                           :source-map true}}}})
+                 {:source-paths ["src/cljs"]
+                  :compiler
+                  {:output-to "resources/public/js/{{name}}.js"
+                   ;;:output-dir "resources/public/js"
+                   ;;:source-map true
+                   :optimizations :advanced}}}})

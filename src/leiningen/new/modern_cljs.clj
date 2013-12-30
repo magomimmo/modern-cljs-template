@@ -10,7 +10,7 @@
 
 
 (defn modern-cljs
-  "A simple project template for mixed CLJ/CLJS web app"
+  "A lein-template for creating mixed CLJ/CLJS projects"
   [name]
   (let [render (renderer "modern-cljs")
         main-ns (multi-segment (sanitize-ns name))
@@ -27,5 +27,9 @@
              ["doc/intro.md" (render "intro.md" data)]
              ["LICENSE" (render "LICENSE" data)]
              ["project.clj" (render "project.clj" data)]
+             ["profiles.clj" (render "profiles.clj" data)]
              ["resources/public/index.html" (render "index.html" data)]
-             ["src/cljs/{{nested-dirs}}.cljs" (render "core.cljs" data)])))
+             ;["dev-resources/public/index.html" (render "index.html" data)]
+             ["src/cljs/{{nested-dirs}}.cljs" (render "core.cljs" data)]
+             ["dev-resources/tools/http/ring/server.clj" (render "server.clj" data)]
+             ["dev-resources/tools/repl/brepl/connect.cljs" (render "connect.cljs" data)])))
