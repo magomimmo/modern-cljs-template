@@ -6,14 +6,19 @@
             [ring.adapter.jetty :as jetty]
             [clojure.java.io :as io]))
 
+;;; reads the index.html page, substitutes the production JS file with
+;;; the development JS file and finally adds the script to connect
+;;; with the brepl
 (enlive/deftemplate page
   (io/resource "public/index.html")
   []
-  [:div.mainjs] (enlive/substitute 
+  [:div.mainjs] (enlive/substitute
                  (enlive/html [:div.mainjs
                                [:script {:src "js/main.js"}]
                                [:script (browser-connected-repl-js)]])))
 
+;;; defines the site routes. Any required page will call the page
+;;; template/function
 (defroutes site
   (resources "/")
   (GET "/*" req (page)))
